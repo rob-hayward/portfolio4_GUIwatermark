@@ -10,11 +10,13 @@ root.title("Watermark Machine")
 root.geometry('1300x700')
 
 
-# Functions
+# Functions.
+# collects the x, y coordinates from a mouse click on the image
 def position_picker(event):
     position_label['text'] = f'({event.x}, {event.y})'
 
 
+# collects the hex and rgb data from the colorchooser and configs txt box
 def color_picker():
     color_data = colorchooser.askcolor()
     color_label['text'] = color_data
@@ -22,6 +24,7 @@ def color_picker():
     txt_box.config(foreground=hex_code)
 
 
+# selects font from user click
 def font_picker(event):
     font_choice.config(family=font_box.get(font_box.curselection()))
 
@@ -46,6 +49,7 @@ def get_variables():
     watermarker(path, text, text_font, rgba, text_pos)
 
 
+# creates a new watermarked image based on user selections
 def watermarker(file, text, text_font, rgba, text_pos):
     global out
     # opens and resizes image
